@@ -29,15 +29,13 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
     ],
     description='OpenCensus Integration to Azure Functions',
     include_package_data=True,
     long_description=open('README.md').read(),
     install_requires=[
         'azure-functions >= 1.7.0',
-        'opencensus >= 0.7.12'
+        'opencensus >= 0.7.12, < 1.0.0'
     ],
     extras_require={},
     license='Apache-2.0',
