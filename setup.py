@@ -30,7 +30,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    description='OpenCensus Azure Monitor Exporter Extensions',
+    description='OpenCensus Extension for Azure',
     include_package_data=True,
     long_description=open('README.md').read(),
     install_requires=[
