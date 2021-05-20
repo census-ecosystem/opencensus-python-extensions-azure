@@ -14,10 +14,10 @@
 
 from setuptools import find_packages, setup
 
-from opencensus_python_extensions_azure import __version__
+from opencensus.azure.extensions import __version__
 
 setup(
-    name='opencensus-python-extensions-azure',
+    name='opencensus-extensions-azure',
     version=__version__,  # noqa
     author='OpenCensus Azure',
     author_email='opencensusazure@microsoft.com',
@@ -30,7 +30,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    description='OpenCensus Extension for Azure',
+    description='OpenCensus extensions for Azure',
     include_package_data=True,
     long_description=open('README.md').read(),
     install_requires=[
