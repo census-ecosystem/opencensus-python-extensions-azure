@@ -12,13 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from setuptools import find_packages, setup
+import os
 
-from opencensus.azure.extensions import __version__
+from setuptools import find_namespace_packages, setup
+
+BASE_DIR = os.path.dirname(__file__)
+VERSION_FILENAME = os.path.join(BASE_DIR, "src", "opencensus", "azure", "functions", "version.py")
+PACKAGE_INFO = {}
+with open(VERSION_FILENAME) as f:
+    exec(f.read(), PACKAGE_INFO)
 
 setup(
-    name='opencensus-extensions-azure',
-    version=__version__,  # noqa
+    name='opencensus-extensions-azure-functions',
+    version=PACKAGE_INFO["__version__"],
     author='OpenCensus Azure',
     author_email='opencensusazure@microsoft.com',
     classifiers=[
@@ -30,17 +36,17 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    description='OpenCensus extensions for Azure',
+    description='OpenCensus extension for Azure Functions',
     include_package_data=True,
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     install_requires=[
-        'azure-functions >= 1.7.0',
-        'opencensus >= 0.7.12, < 1.0.0'
+        'azure-functions >= 1.7.0, < 2.0.0',
+        'opencensus-ext-azure >= 1.0.4, < 2.0.0'
     ],
     extras_require={},
     license='Apache-2.0',
-    packages=find_packages(exclude=('examples', 'tests',)),
-    namespace_packages=[],
-    url='https://github.com/census-ecosystem/opencensus-python-extensions-azure',  # noqa: E501
+    package_dir={'': 'src'},
+    packages=find_namespace_packages(where='src'),
+    url='https://github.com/census-ecosystem/opencensus-python-extensions-azure',
     zip_safe=False,
 )
