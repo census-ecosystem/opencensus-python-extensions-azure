@@ -17,13 +17,13 @@ import os
 from setuptools import find_namespace_packages, setup
 
 BASE_DIR = os.path.dirname(__file__)
-VERSION_FILENAME = os.path.join(BASE_DIR, "src", "opencensus", "azure", "functions", "version.py")
+VERSION_FILENAME = os.path.join(BASE_DIR, "src", "opencensus", "extension", "azure", "version.py")
 PACKAGE_INFO = {}
 with open(VERSION_FILENAME) as f:
     exec(f.read(), PACKAGE_INFO)
 
 setup(
-    name='opencensus-extensions-azure-functions',
+    name='opencensus-extension-azure-functions',
     version=PACKAGE_INFO["__version__"],
     author='OpenCensus Azure',
     author_email='opencensusazure@microsoft.com',

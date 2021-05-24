@@ -17,7 +17,7 @@ import logging
 
 import requests
 
-from opencensus.azure.functions.extension import OpenCensusExtension
+from opencensus.extension.azure.functions import OpenCensusExtension
 
 """
 Configure PYTHON_ENABLE_WORKER_EXTENSIONS = 1 function app setting.
@@ -30,7 +30,7 @@ The Azure trace exporter in `opencensus-ext-azure` is replaced by
 This example also uses `opencensus-ext-requests` to trace telemetry sent using
 the `requests` library.
 
-Ensure `opencensus-extensions-azure-functions` and `opencensus-ext-requests`
+Ensure `opencensus-extension-azure-functions` and `opencensus-ext-requests`
 are defined in your function app's `requirements.txt` and properly installed.
 
 For more information about getting started with Azure Functions, please visit

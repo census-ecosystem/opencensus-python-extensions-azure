@@ -18,7 +18,7 @@ import unittest
 
 import mock
 
-from opencensus.azure.functions.extension import OpenCensusExtension
+from opencensus.extension.azure.functions import OpenCensusExtension
 
 IS_SUPPORTED_PYTHON_VERSION = sys.version_info.major == 3
 
@@ -49,7 +49,7 @@ class TestAzureFunctionsExtension(unittest.TestCase):
         if 'APPINSIGHTS_INSTRUMENTATIONKEY' in os.environ:
             del os.environ['APPINSIGHTS_INSTRUMENTATIONKEY']
 
-    @mock.patch('opencensus.azure.functions.extension.AzureExporter')
+    @mock.patch('opencensus.extension.azure.functions.AzureExporter')
     def test_configure_method_should_setup_azure_exporter(
         self,
         azure_exporter_mock
@@ -57,7 +57,7 @@ class TestAzureFunctionsExtension(unittest.TestCase):
         self._instance.configure()
         azure_exporter_mock.assert_called_with()
 
-    @mock.patch('opencensus.azure.functions.extension.AzureExporter')
+    @mock.patch('opencensus.extension.azure.functions.AzureExporter')
     def test_configure_method_shouold_setup_azure_exporter_with_connstring(
         self,
         azure_exporter_mock
