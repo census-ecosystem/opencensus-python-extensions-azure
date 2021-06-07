@@ -15,7 +15,9 @@
 import json
 import logging
 
+import requests
 from opencensus.extension.azure.functions import OpenCensusExtension
+from opencensus.trace import config_integration
 
 """
 This example uses the `OpenCensusExtension` for Azure Functions, which
@@ -24,9 +26,13 @@ sends the dependency/request telemetry collected to Application Insights.
 The Azure trace exporter in `opencensus-ext-azure` is replaced by
 `OpenCensusExtension`, so it does not need to be instantiated separately.
 
+This example also uses `opencensus-ext-requests` to trace telemetry sent using
+the `requests` library.
+
 Ensure the following lines are defined in your function app's `requirements.txt`
 and properly installed:
     opencensus-extension-azure-functions
+    opencensus-ext-requests
 
 Ensure the following setting is configured in your Azure Functions app or
 local.settings.json:
@@ -44,7 +50,7 @@ in `OpenCensus`. See https://github.com/census-instrumentation/opencensus-python
 tree/master/contrib/opencensus-ext-azure for more details.
 """
 
-logger = logging.getLogger('HttpTriggerLogger')
+config_integration.trace_integrations(['requests'])
 
 # By default, the connection string defined in `APPLICATIONINSIGHTS_CONNECTION_STRING`
 # is used to send trace information.
@@ -53,14 +59,15 @@ logger = logging.getLogger('HttpTriggerLogger')
 OpenCensusExtension.configure()
 
 def main(req, context):
-    logger.info('Executing HttpTrigger with OpenCensus extension')
+    logging.info('Executing HttpTrigger with OpenCensus extension')
 
     # You must use context.tracer to create spans
     with context.tracer.span("parent"):
-        logger.info('Message from HttpTrigger')
+        response = requests.get(url='http://example.com')
 
     return json.dumps({
         'method': req.method,
+        'response': response.status_code,
         'ctx_func_name': context.function_name,
         'ctx_func_dir': context.function_directory,
         'ctx_invocation_id': context.invocation_id,
