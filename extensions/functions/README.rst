@@ -22,21 +22,20 @@ How To Use In Python Functions
 ------------------------------
 1. Use ``func init --python`` or ``VSCode Extensions Blade -> Azure -> Functions -> Create New Project...`` to create a Python function app.
 
-2. Use ``func new -a anonymous -t HttpTrigger -n HttpTrigger`` to create an anonymous Http trigger in your function app. If you're using VSCode,
-the project creation wizard will guide you through the same process.
+2. Use ``func new -a anonymous -t HttpTrigger -n HttpTrigger`` to create an anonymous Http trigger in your function app. If you're using VSCode, the project creation wizard will guide you through the same process.
 
 3. Include ``opencensus-extension-azure-functions`` to your requirements.txt
 
-4. In local.settings.json, add new settings ``"PYTHON_ENABLE_WORKER_DEPENDENCIES": "1"`` and ``"APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"``.
-You can acquire your appinsights instrumentation key from your Azure Application Insights resource.
+4. In local.settings.json, add new settings ``"PYTHON_ENABLE_WORKER_DEPENDENCIES": "1"`` and ``"APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"``. You can acquire your appinsights instrumentation key from your Azure Application Insights resource.
 
-5. Set up a virtual environment for your local development:
-    1. Create a virtual environment with ``py -3.7 -m venv .venv`` in Windows or ``python3.7 -m venv .venv`` in Unix-like systems.
-    2. Activate the virtual environment with ``.venv\Scripts\Activate.ps1`` in Windows PowerShell or ``source .venv/bin/activate`` in Unix-like systems.
+5. Set up a virtual environment for your local development
+    #. Create a virtual environment with ``py -3.7 -m venv .venv`` in Windows or ``python3.7 -m venv .venv`` in Unix-like systems.
+    #. Activate the virtual environment with ``.venv\Scripts\Activate.ps1`` in Windows PowerShell or ``source .venv/bin/activate`` in Unix-like systems.
 
-6. Change the HTTP trigger file in ``<project_root>/HttpTrigger/\_\_init\_\_.py`` to enable the OpenCensus tracing integration.
+6. Change the HTTP trigger file in ``<project_root>/HttpTrigger/__init__.py`` to enable the OpenCensus tracing integration.
 
 .. code:: python
+
     import json
     import logging
 
@@ -63,7 +62,7 @@ You can acquire your appinsights instrumentation key from your Azure Application
 
 
 7. Run it in your local development environment by ``func host start --verbose`` in Core Tools or ``hitting F5`` in VSCode.
-8. You should now be able to check the trace information in your Application Insight -> Investigate -> Application Map.
+8. You should now be able to check the trace information in your ``Application Insight -> Investigate -> Application Map``.
 
 To use Opencensus Python Extensions in other scenarios,
 please visit `our example folder <https://github.com/census-ecosystem/opencensus-python-extensions-azure/tree/main/examples>`_
