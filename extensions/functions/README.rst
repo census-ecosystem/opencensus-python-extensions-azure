@@ -25,7 +25,7 @@ How To Use In Python Functions
 2. Use ``func new -a anonymous -t HttpTrigger -n HttpTrigger`` to create an anonymous Http trigger in your function app. If you're using VSCode,
 the project creation wizard will guide you through the same process.
 
-3. Include ``opencensus-extension-azure-functions`` and ``requests`` to your requirements.txt
+3. Include ``opencensus-extension-azure-functions`` to your requirements.txt
 
 4. In local.settings.json, add new settings ``"PYTHON_ENABLE_WORKER_DEPENDENCIES": "1"`` and ``"APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"``.
 You can acquire your appinsights instrumentation key from your Azure Application Insights resource.
@@ -74,4 +74,4 @@ References
 * `OpenCensus Project <https://opencensus.io/>`_
 * `OpenCensus Python SDK <https://github.com/census-instrumentation/opencensus-python/>`_
 * `Python Worker Extension Interface <https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python#python-worker-extensions>`_
-* `Author Your First Worker Extension <https://docs.microsoft.com/en-us/azure/azure-functions/author-python-worker-extensions>`_
+* `Develop Python Worker Extensions <https://docs.microsoft.com/en-us/azure/azure-functions/develop-python-worker-extensions>`_
