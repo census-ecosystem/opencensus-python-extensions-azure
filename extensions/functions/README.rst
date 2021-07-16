@@ -26,7 +26,7 @@ How To Use In Python Functions
 
 3. Include ``opencensus-extension-azure-functions`` to your requirements.txt
 
-4. In local.settings.json, add new settings ``"PYTHON_ENABLE_WORKER_DEPENDENCIES": "1"`` and ``"APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"``. You can acquire your appinsights instrumentation key from your Azure Application Insights resource.
+4. In local.settings.json, add new settings ``"PYTHON_ENABLE_WORKER_EXTENSIONS": "1"`` and ``"APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"``. You can acquire your appinsights instrumentation key from your Azure Application Insights resource.
 
 5. Set up a virtual environment for your local development
     #. Create a virtual environment with ``py -3.7 -m venv .venv`` in Windows or ``python3.7 -m venv .venv`` in Unix-like systems.
